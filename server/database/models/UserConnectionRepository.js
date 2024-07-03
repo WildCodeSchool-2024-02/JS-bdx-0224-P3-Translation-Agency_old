@@ -69,13 +69,13 @@ class UserConnectionRepository extends AbstractRepository {
           WHERE Email = "${user_email_address}" AND  Password = "${user_password}"
           `;
   
-          const [result] = await this.database.query(query, function(error, data){
+    const [result] = await this.database.query(query, function(error, data){
   
-              if(data.length > 0)
-              {
-                  for(var count = 0; count < data.length; count++)
-                  {
-                      if(data[count].user_password == user_password)
+      if(data.length > 0)
+      {
+      for(var count = 0; count < data.length; count++)
+        {
+      if(data[count].user_password == user_password)
                       {
                           request.session.user_id = data[count].user_id;
   
