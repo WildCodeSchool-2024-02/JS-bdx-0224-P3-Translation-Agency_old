@@ -1,18 +1,21 @@
-const JwtStrategy = require("passport-jwt").Strategy;
-const {ExtractJwt} = require("passport-jwt");
-const passport = require("passport");
-const  client= require("../../database/client"); // Replace with your MySQL database configuration
+// eslint-disable-next-line import/no-unresolved, import/no-duplicates
+import { Strategy as JwtStrategy } from "passport-jwt";
+// eslint-disable-next-line import/no-unresolved, import/no-duplicates
+import { ExtractJwt } from "passport-jwt";
+// eslint-disable-next-line import/no-unresolved
+import { use, authenticate } from "passport";
+import { query } from "../../database/client"; // Replace with your MySQL database configuration
 
 
 
 const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();git 
 opts.secretOrKey = process.env.secretKey;
 
-passport.use(
+use(
   new JwtStrategy(opts, async (jwtPayload, done) => {
     try {
-      const [user] = await client.query(
+      const [user] = await query(
         "SELECT id, user_name, email,role FROM users WHERE id = ?",
         [jwtPayload.id]
       );
@@ -28,6 +31,6 @@ passport.use(
   })
 );
 
-const isAuth = () => passport.authenticate("jwt", { session: false });
+const isAuth = () => authenticate("jwt", { session: false });
 
-module.exports = isAuth;
+export default isAuth;
