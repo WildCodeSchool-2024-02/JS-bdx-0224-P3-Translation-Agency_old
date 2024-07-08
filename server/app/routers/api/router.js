@@ -1,15 +1,22 @@
-const express = require("express");
-
-const router = express.Router();
+// eslint-disable-next-line import/no-unresolved
+import { Router } from "express";
 
 /* ************************************************************************* */
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const itemsRouter = require("./items/router");
+import usersAppRouter from "./users/userAppRouter";
+import clientsRouter from "./clients/clientRouter";
+import translatorsRouter from "./translators/translatorRouter";
+import estimationsRouter from "./estimations/estimationRouter";
 
-router.use("/items", itemsRouter);
+const router = Router();
+
+router.use("/users", usersAppRouter);
+router.use("/clients", clientsRouter);
+router.use("/translators", translatorsRouter);
+router.use("/estimations", estimationsRouter);
 
 /* ************************************************************************* */
 
-module.exports = router;
+export default router;
