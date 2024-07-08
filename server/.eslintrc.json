@@ -11,5 +11,12 @@
   },
   "rules": {
     "no-console": ["error", { "allow": ["error", "info", "warn"] }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"] // ajoutez les extensions nécessaires ici
+      }
+    }
   }
 }

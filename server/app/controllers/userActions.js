@@ -87,21 +87,19 @@ const destroy = async (req, res, next) => {
 };
 
 
+/*
 const  login = async (credentiel) => {
   if(credentiel.user_email_address && credentiel.user_password)
     {
-        query = `
-        SELECT * FROM  ${this.table} 
-        WHERE Email = "${user_email_address}" AND  Password = "${user_password}"
-        `;
+       const query = `SELECT * FROM  ${this.table} WHERE Email = "${credentiel.user_email_address}" AND  Password = "${credentiel.user_password}"`;
 
-        const [result] = await this.database.query(query, function(error, data){
+        const [result] = await this.database.query(query, (error, data)=>{
 
             if(data.length > 0)
             {
-                for(var count = 0; count < data.length; count++)
+                for(let count = 0; count < data.length;count)
                 {
-                    if(data[count].user_password == user_password)
+                    if(data[count].user_password === credentiel.user_password)
                     {
                         request.session.user_id = data[count].user_id;
 
@@ -120,6 +118,7 @@ const  login = async (credentiel) => {
           });
         }
       }
+        */
 // Ready to export the controller functions
 module.exports = {
   browse,
@@ -127,6 +126,6 @@ module.exports = {
   edit,
   add,
   destroy,
-  login
+  // login
 };
 

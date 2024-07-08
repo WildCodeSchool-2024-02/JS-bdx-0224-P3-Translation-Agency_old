@@ -1,19 +1,18 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class EstimationRepository extends AbstractRepository {
+class ModelDocumentRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
     // and pass the table name "translators" as configuration
-    super({ table: "Estimation" });
+    super({ table: "Model_Docs" });
   }
 
   // The C of CRUD - Create operation
-
-  async create(estimation) {
-    // Execute the SQL INSERT query to add a new translator to the "translators" table
+  async create(model) {
+    // Execute the SQL INSERT query to add a new model to the "Model_docs" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc) values (?, ?, ?, ?, ?)`,
-      [estimation.Email, estimation.Id_Translator,estimation.FirstClientName,estimation.LastClientName,,estimation.Language_Doc]
+      `insert into ${this.table} (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator) values (?, ?, ?, ?, ?, ?)`,
+      [model.TypeDocument,model.LanguageSource,model.Status,model.PathUploadedFile,model.IdClient,model.idTranslator]
     );
 
     // Return the ID of the newly inserted client
@@ -25,7 +24,7 @@ class EstimationRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific translator by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where Id_tarification = ?`,
+      `select * from ${this.table} where Id_Doc = ?`,
       [id]
     );
 
@@ -42,10 +41,10 @@ class EstimationRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-   async update(estimation) {
+   async update(translator) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table}  SET Email =?, Id_Translator  =?,FirstClientName  =?,LastClientName  =?,Language_Doc  =? where Id_Tarification = ? `,
-      [estimation.Email, estimation.Id_Translator,estimation.FirstClientName,estimation.LastClientName,estimation.Language_Doc , estimation.IdTarification]
+      `UPDATE ${this.table}  SET Type_Doc=?,Languages_source=?,Status=?,Real_Path_Emplacement=?,Id_Client=?,Id_Translator=? WHERE Id_Doc = ?`,
+      [model.TypeDocument,model.LanguageSource,model.Status,model.PathUploadedFile,model.IdClient,model.idTranslator]
     );
     return result;
    }
@@ -54,7 +53,7 @@ class EstimationRepository extends AbstractRepository {
   
   async delete(id) {
     const [result] = await this.database.query(
-     `DELETE FROM ${this.table} where Id_Tarification = ?`,[id]
+     `DELETE FROM ${this.table} where Id_Doc = ?`,[id]
    );
 
    return result;
@@ -62,4 +61,4 @@ class EstimationRepository extends AbstractRepository {
 
 }
 
-module.exports = EstimationRepository;
+module.exports = ModelDocumentRepository;

@@ -1,5 +1,4 @@
-const AbstractRepository = require("./AbstractRepository");
-
+const AbstractRepository = require("./AbstractRepository"); 
 class UserConnectionRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
@@ -61,39 +60,6 @@ class UserConnectionRepository extends AbstractRepository {
     return result;
   }
 
-  async login(){
-    if(user_email_address && user_password)
-      {
-          query = `
-          SELECT * FROM  ${this.table} 
-          WHERE Email = "${user_email_address}" AND  Password = "${user_password}"
-          `;
-  
-    const [result] = await this.database.query(query, function(error, data){
-  
-      if(data.length > 0)
-      {
-      for(var count = 0; count < data.length; count++)
-        {
-      if(data[count].user_password == user_password)
-                      {
-                          request.session.user_id = data[count].user_id;
-  
-                          response.redirect("/");
-                      }
-                      else
-                      {
-                          response.send('Incorrect Password');
-                      }
-                  }
-              }
-              else
-              {
-                  response.send('Incorrect Email Address');
-              }
-            });
-          }
-        }
 
 }
 module.exports = UserConnectionRepository;

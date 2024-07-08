@@ -3,24 +3,21 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-//  API Routes for estimation
+// Define Your API Routes Here
 /* ************************************************************************* */
 
 // Import item-related actions
-const { browse, read,edit,destroy, add } = require("../../../controllers/estimationActions");
+const { browse, read, add } = require("../../../controllers/itemActions");
 
-// Route to get a list of estimations
+// Route to get a list of items
 router.get("/", browse);
 
-// Route to get a specific estimation by ID
+// Route to get a specific item by ID
 router.get("/:id", read);
 
-// Route to add a new estimation
+// Route to add a new item
 router.post("/", add);
-// Route to modifier a estimation
-router.put("/", edit);
-// Route to delete a estimation
-router.delete("/:id", destroy);
+
 /* ************************************************************************* */
 
 module.exports = router;

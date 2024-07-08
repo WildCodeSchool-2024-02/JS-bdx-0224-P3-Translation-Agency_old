@@ -13,7 +13,7 @@ class EstimationRepository extends AbstractRepository {
     // Execute the SQL INSERT query to add a new translator to the "translators" table
     const [result] = await this.database.query(
       `insert into ${this.table} (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc) values (?, ?, ?, ?, ?)`,
-      [estimation.Email, estimation.Id_Translator,estimation.FirstClientName,estimation.LastClientName,,estimation.Language_Doc]
+      [estimation.Email, estimation.Id_Translator,estimation.FirstClientName,estimation.LastClientName,estimation.Language_Doc]
     );
 
     // Return the ID of the newly inserted client

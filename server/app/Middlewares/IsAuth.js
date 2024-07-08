@@ -1,7 +1,5 @@
 // eslint-disable-next-line import/no-unresolved, import/no-duplicates
-import { Strategy as JwtStrategy } from "passport-jwt";
-// eslint-disable-next-line import/no-unresolved, import/no-duplicates
-import { ExtractJwt } from "passport-jwt";
+import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 // eslint-disable-next-line import/no-unresolved
 import { use, authenticate } from "passport";
 import { query } from "../../database/client"; // Replace with your MySQL database configuration
@@ -9,7 +7,7 @@ import { query } from "../../database/client"; // Replace with your MySQL databa
 
 
 const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();git 
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken(); 
 opts.secretOrKey = process.env.secretKey;
 
 use(

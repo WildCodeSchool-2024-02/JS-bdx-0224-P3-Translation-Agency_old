@@ -1,19 +1,19 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class ClientRepository extends AbstractRepository {
+class TranslatorRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
-    // and pass the table name "client" as configuration
-    super({ table: "clients" });
+    // and pass the table name "translators" as configuration
+    super({ table: "translators" });
   }
 
   // The C of CRUD - Create operation
 
-  async create(client) {
-    // Execute the SQL INSERT query to add a new client to the "clients" table
+  async create(translator) {
+    // Execute the SQL INSERT query to add a new translator to the "translators" table
     const [result] = await this.database.query(
-      `insert into ${this.table} (Email, Password,FirstName,LastName,NumberPhone) values (?, ?, ?, ?, ?)`,
-      [client.Email, client.Password,client.FirstName,client.LastName,client.NumberPhone]
+      `insert into ${this.table} (Email, Password,FirstName,LastName,NumberPhone,language) values (?, ?, ?, ?, ?, ?)`,
+      [translator.Email, translator.Password,translator.FirstName,translator.LastName,translator.NumberPhone,translator.language]
     );
 
     // Return the ID of the newly inserted client
@@ -23,9 +23,9 @@ class ClientRepository extends AbstractRepository {
   // The Rs of CRUD - Read operations
 
   async read(id) {
-    // Execute the SQL SELECT query to retrieve a specific client by its ID
+    // Execute the SQL SELECT query to retrieve a specific translator by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where Id_Client = ?`,
+      `select * from ${this.table} where id = ?`,
       [id]
     );
 
@@ -42,10 +42,10 @@ class ClientRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-   async update(client) {
+   async update(translator) {
     const [result] = await this.database.query(
-      `UPDATE ${this.table}  SET Email =?, Password =?,FirstName =?,LastName =?,NumberPhone =? WHERE Id_Client = ?`,
-      [client.Email, client.Password,client.FirstName,client.LastName,client.NumberPhone,client.IdClient]
+      `UPDATE ${this.table}  SET Email =?, Password =?,FirstName =?,LastName =?,NumberPhone =? WHERE Id_Translator = ?`,
+      [translator.Email, translator.Password,translator.FirstName,translator.LastName,translator.NumberPhone,translator.language,translator.idTranslator]
     );
     return result;
    }
@@ -54,11 +54,12 @@ class ClientRepository extends AbstractRepository {
   
   async delete(id) {
     const [result] = await this.database.query(
-     `DELETE FROM ${this.table} where Id_Client = ?`,[id]
+     `DELETE FROM ${this.table} where id = ?`,[id]
    );
 
    return result;
  }
+
 }
 
-module.exports = ClientRepository;
+module.exports = TranslatorRepository;
