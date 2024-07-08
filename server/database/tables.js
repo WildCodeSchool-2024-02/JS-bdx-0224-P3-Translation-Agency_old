@@ -2,7 +2,8 @@
 const ClientRepository = require("./models/ClientRepository");
 const EstimationRepository = require("./models/EstimationRepository");
 const TranslatorRepository = require("./models/TranslatorRepository");
-const UserConnectionRepository = require("./models/UserConnectionRepository ");
+const UserConnectionRepository = require("./models/UserConnectionRepository");
+const ModelDocumentRepository = require("./models/ModelDocumentRepository");
 // Create an empty object to hold data repositories for different tables
 const tables = {};
 
@@ -15,7 +16,7 @@ tables.client = new ClientRepository();
 tables.estimation = new EstimationRepository();
 tables.translator = new TranslatorRepository();
 tables.user = new UserConnectionRepository();
-
+tables.modelDocs = new ModelDocumentRepository();
 
 /* ************************************************************************* */
 
@@ -33,3 +34,4 @@ module.exports = new Proxy(tables, {
     );
   },
 });
+
