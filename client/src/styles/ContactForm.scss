@@ -1,0 +1,53 @@
+@use "./app.scss" as *;
+
+.contactTitle {
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.inputContact {
+  width: 60dvw;
+  margin-bottom: 3dvh;
+  color: black;
+}
+
+.container_contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.ContactForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 7rem;
+
+  .labelContact {
+    box-shadow: 0 0 5px;
+  }
+
+  .contactButton,
+  .labelContact {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.8rem;
+    background-color: #8338ec;
+    border-radius: 15px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .ContactForm {
+    margin-bottom: 11rem;
+
+    .textareaContact {
+      width: 50rem;
+    }
+    .contactButton {
+      font-size: 1.1rem;
+    }
+  }
+}

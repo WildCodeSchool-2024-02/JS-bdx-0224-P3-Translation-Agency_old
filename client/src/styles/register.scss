@@ -1,0 +1,36 @@
+#backH {
+  background-image: url("https://s3-alpha-sig.figma.com/img/1051/1b6f/269e1c659dbfaa2434c2605e16cbe8c1?Expires=1721001600&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=dUu7nDZubbdzMV0jobul0hE6g7ID6rC337dNXjWwWBqGbCegzT99DuXJME7A3mQ6B-W2d~Czut8If4otqN2F9-9VL-LXgsR4w4qM1IR~M73wjJIwIsRejQfZ87W1yVtsnrFsY2eypofmfkdp7ZqiERiEGvF4ZG6WNCPYzRw2KDZ6fcDARwUx7mO-0ZI0B5Lq~gO2QZtNReKA3Pkesc6QlvJxCPA8KT-E0KbGwmLkK6K-Hmvf17ATr0jySDS2WrzKakkT1LrOXn80ghPyBcEjetBGDLZI4nQ2YA4pYAPJgBmoLmBQYmOeBMIVR0inB3t3I5MgBTIGDpceYwsQU6qoyw__");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 104%;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input_register {
+  width: 100%;
+  height: 2.5rem !important ;
+  font-size: 1.1rem !important ;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: white !important;
+}
+.form_register {
+  width: 50%;
+  padding: 5%;
+  background-color: black;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 20px;
+}
+.btn_register {
+  background-color: rgba(131, 56, 236, 1);
+  width: 50%;
+  margin-top: 2dvh;
+  height: 6dvh;
+  border-radius: 15px;
+}
