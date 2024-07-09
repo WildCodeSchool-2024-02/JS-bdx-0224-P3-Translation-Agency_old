@@ -68,15 +68,22 @@ export default function Home() {
         <div>
           <h3>Notre mission :</h3>
           <p>
-            Nous sommes une entreprise dédiée à fournir des services de <br />
-            traduction et d'interprétariat de haute qualité. Que vous ayez{" "}
+            Bienvenue sur notre site de services de traduction professionnelle.{" "}
             <br />
-            besoin de traduire des documents techniques, juridiques, ou <br />
-            marketing, notre équipe de traducteurs professionnels est là pour{" "}
+            Que vous ayez besoin de traduire des documents juridiques, des
+            contenus marketing, des articles techniques, ou des correspondances
+            personnelles, notre équipe de traducteurs expérimentés est là pour
+            vous aider <br />
+            Nous offrons des services de traduction précis et fiables dans une
+            multitude de langues, garantissant que votre message est transmis
+            avec exactitude et dans le respect des nuances culturelles <br />
+            Faites confiance à notre expertise pour obtenir des traductions de
+            haute qualité qui répondent à vos besoins spécifiques et dépassent
+            vos attentes <br />
+            Contactez-nous dès aujourd'hui pour un devis personnalisé et
+            découvrez comment nous pouvons vous assister dans tous vos projets
+            de traduction.
             <br />
-            vous aider. Avec des années d'expérience et une expertise dans plus{" "}
-            <br />
-            de 50 langues, nous garantissons des traductions précises et <br />
             adaptées à vos besoins spécifiques.
           </p>
           <button className="home-header-section-btn1" type="button">
@@ -88,7 +95,7 @@ export default function Home() {
             <HoverCard
               className="home-hover-card"
               image={card1Img}
-              title="Interprétation professionnel"
+              title="interprétation professionnel"
               texts={[
                 "Interprétation Simultanée",
                 "Traduction de Rapports d'Activité",
@@ -99,7 +106,7 @@ export default function Home() {
             <HoverCard
               className="home-hover-card"
               image={card2Img}
-              title="Interprétation professionnel"
+              title="interprétation professionnel"
               texts={[
                 "Interprétation Simultanée",
                 "Traduction de Rapports d'Activité",
