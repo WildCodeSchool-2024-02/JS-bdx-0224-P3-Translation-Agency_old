@@ -12,7 +12,14 @@ class ModelDocumentRepository extends AbstractRepository {
     // Execute the SQL INSERT query to add a new model to the "Model_docs" table
     const [result] = await this.database.query(
       `insert into ${this.table} (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator) values (?, ?, ?, ?, ?, ?)`,
-      [model.TypeDocument,model.LanguageSource,model.Status,model.PathUploadedFile,model.IdClient,model.idTranslator]
+      [
+        model.TypeDocument,
+        model.LanguageSource,
+        model.Status,
+        model.PathUploadedFile,
+        model.IdClient,
+        model.idTranslator,
+      ]
     );
 
     // Return the ID of the newly inserted client
@@ -41,24 +48,31 @@ class ModelDocumentRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-   async update(translator) {
+  async update(translator) {
     const [result] = await this.database.query(
       `UPDATE ${this.table}  SET Type_Doc=?,Languages_source=?,Status=?,Real_Path_Emplacement=?,Id_Client=?,Id_Translator=? WHERE Id_Doc = ?`,
-      [model.TypeDocument,model.LanguageSource,model.Status,model.PathUploadedFile,model.IdClient,model.idTranslator]
+      [
+        model.TypeDocument,
+        model.LanguageSource,
+        model.Status,
+        model.PathUploadedFile,
+        model.IdClient,
+        model.idTranslator,
+      ]
     );
     return result;
-   }
+  }
 
   // The D of CRUD - Delete operation
-  
+
   async delete(id) {
     const [result] = await this.database.query(
-     `DELETE FROM ${this.table} where Id_Doc = ?`,[id]
-   );
+      `DELETE FROM ${this.table} where Id_Doc = ?`,
+      [id]
+    );
 
-   return result;
- }
-
+    return result;
+  }
 }
 
 module.exports = ModelDocumentRepository;

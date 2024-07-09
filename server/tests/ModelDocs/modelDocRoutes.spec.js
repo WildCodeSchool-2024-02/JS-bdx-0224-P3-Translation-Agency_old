@@ -63,9 +63,16 @@ describe("POST /api/documents", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
-   // Fake model data (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator)`,
-   const fakeModel = { TypeDoc: "CIN", LanguageSource: "Italien",Status:"1",PathUploadFile:"D:/fake_path/doc001",IdClient:"2",IdTranslator:"1"};
-   // Send a POST request to the /api/documents endpoint with a test model document
+    // Fake model data (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator)`,
+    const fakeModel = {
+      TypeDoc: "CIN",
+      LanguageSource: "Italien",
+      Status: "1",
+      PathUploadFile: "D:/fake_path/doc001",
+      IdClient: "2",
+      IdTranslator: "1",
+    };
+    // Send a POST request to the /api/documents endpoint with a test model document
     const response = await request(app).post("/api/documents").send(fakeModel);
 
     // Assertions
@@ -87,9 +94,17 @@ describe("PUT /api/documents", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
-   // Fake model data (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator)`,
-   const fakeModel = { TypeDoc: "CIN", LanguageSource: "Francais",Status:"1",PathUploadFile:"D:/fake_path/doc001",IdClient:"2",IdTranslator:"1",IdDoc:"2"};    
-   // Send a PUT request to the /api/documents endpoint with a test model doc
+    // Fake model data (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator)`,
+    const fakeModel = {
+      TypeDoc: "CIN",
+      LanguageSource: "Francais",
+      Status: "1",
+      PathUploadFile: "D:/fake_path/doc001",
+      IdClient: "2",
+      IdTranslator: "1",
+      IdDoc: "2",
+    };
+    // Send a PUT request to the /api/documents endpoint with a test model doc
     const response = await request(app).put("/api/documents").send(fakeModel);
 
     // Assertions

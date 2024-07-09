@@ -43,7 +43,7 @@ const add = async (req, res, next) => {
     // Insert the item into the database
     const insertId = await tables.client.create(clientBody);
 
-  // Respond with HTTP 201 (Created) client
+    // Respond with HTTP 201 (Created) client
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -60,7 +60,7 @@ const edit = async (req, res, next) => {
     // Insert the item into the database
     const modifiedId = await tables.client.update(clientBody);
 
-    // Respond with HTTP 200 (updated) client 
+    // Respond with HTTP 200 (updated) client
     res.status(200).json({ modifiedId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -77,7 +77,7 @@ const destroy = async (req, res, next) => {
     // Insert the client into the database
     const deletedId = await tables.client.delete(clientId);
 
-    // Respond with HTTP 204 (deleted) client 
+    // Respond with HTTP 204 (deleted) client
     res.status(204).json({ deletedId });
   } catch (err) {
     // Pass any errors to the error-handling middleware

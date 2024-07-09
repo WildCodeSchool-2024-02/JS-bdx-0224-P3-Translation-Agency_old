@@ -59,7 +59,7 @@ const edit = async (req, res, next) => {
     // Insert the item into the database
     const modifiedId = await tables.translator.update(translatorBody);
 
-    // Respond with HTTP 200 (updated) translator 
+    // Respond with HTTP 200 (updated) translator
     res.status(200).json({ modifiedId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -76,7 +76,7 @@ const destroy = async (req, res, next) => {
     // Insert the item into the database
     const deletedId = await tables.translator.delete(translatorId);
 
-    // Respond with HTTP 204 (deleted) translator 
+    // Respond with HTTP 204 (deleted) translator
     res.status(204).json({ deletedId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -89,5 +89,5 @@ module.exports = {
   read,
   edit,
   add,
-  destroy
+  destroy,
 };

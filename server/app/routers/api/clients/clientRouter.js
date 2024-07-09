@@ -6,7 +6,13 @@ const router = express.Router();
 //  API Routes for Client
 /* ************************************************************************* */
 
-const { browse, read, add ,edit,destroy } = require("../../../controllers/clientActions");
+const {
+  browse,
+  read,
+  add,
+  edit,
+  destroy,
+} = require("../../../controllers/clientActions");
 
 // Route to get a list of clients
 router.get("/", browse);

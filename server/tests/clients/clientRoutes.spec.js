@@ -64,7 +64,13 @@ describe("POST /api/clients", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake client data Email, Password,FirstName,LastName,NumberPhone
-    const fakeClient = { Email: "test2@gmail.com", Password: "passCl2",FirstName:"first2",LastName:"last2",NumberPhone:"2222222"  };
+    const fakeClient = {
+      Email: "test2@gmail.com",
+      Password: "passCl2",
+      FirstName: "first2",
+      LastName: "last2",
+      NumberPhone: "2222222",
+    };
     // Send a POST request to the /api/clients endpoint with a test client
     const response = await request(app).post("/api/clients").send(fakeClient);
 
@@ -88,7 +94,14 @@ describe("PUT /api/clients", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake client data Email, Password,FirstName,LastName,NumberPhone
-    const fakeClient = { Email: "test1@gmail.com", Password: "passCl1",FirstName:"first",LastName:"last",NumberPhone:"333333",IdClient:"1" };
+    const fakeClient = {
+      Email: "test1@gmail.com",
+      Password: "passCl1",
+      FirstName: "first",
+      LastName: "last",
+      NumberPhone: "333333",
+      IdClient: "1",
+    };
     // Send a PUT request to the /api/clients endpoint with a test client
     const response = await request(app).put("/api/clients").send(fakeClient);
 

@@ -13,7 +13,13 @@ class EstimationRepository extends AbstractRepository {
     // Execute the SQL INSERT query to add a new translator to the "translators" table
     const [result] = await this.database.query(
       `insert into ${this.table} (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc) values (?, ?, ?, ?, ?)`,
-      [estimation.Email, estimation.Id_Translator,estimation.FirstClientName,estimation.LastClientName,estimation.Language_Doc]
+      [
+        estimation.Email,
+        estimation.Id_Translator,
+        estimation.FirstClientName,
+        estimation.LastClientName,
+        estimation.Language_Doc,
+      ]
     );
 
     // Return the ID of the newly inserted client
@@ -42,24 +48,31 @@ class EstimationRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-   async update(estimation) {
+  async update(estimation) {
     const [result] = await this.database.query(
       `UPDATE ${this.table}  SET Email =?, Id_Translator  =?,FirstClientName  =?,LastClientName  =?,Language_Doc  =? where Id_Tarification = ? `,
-      [estimation.Email, estimation.Id_Translator,estimation.FirstClientName,estimation.LastClientName,estimation.Language_Doc , estimation.IdTarification]
+      [
+        estimation.Email,
+        estimation.Id_Translator,
+        estimation.FirstClientName,
+        estimation.LastClientName,
+        estimation.Language_Doc,
+        estimation.IdTarification,
+      ]
     );
     return result;
-   }
+  }
 
   // The D of CRUD - Delete operation
-  
+
   async delete(id) {
     const [result] = await this.database.query(
-     `DELETE FROM ${this.table} where Id_Tarification = ?`,[id]
-   );
+      `DELETE FROM ${this.table} where Id_Tarification = ?`,
+      [id]
+    );
 
-   return result;
- }
-
+    return result;
+  }
 }
 
 module.exports = EstimationRepository;

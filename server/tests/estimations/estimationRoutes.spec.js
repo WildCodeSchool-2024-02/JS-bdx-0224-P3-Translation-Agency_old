@@ -63,10 +63,18 @@ describe("POST /api/estimations", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
-     // Fake estimation data (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc)
-     const fakeEstimation = { Email: "test@gmail.com", Id_Translator: "1",FirstClientName:"firstCl",LastClientName:"last",Language_Doc:"Fr"  };
+    // Fake estimation data (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc)
+    const fakeEstimation = {
+      Email: "test@gmail.com",
+      Id_Translator: "1",
+      FirstClientName: "firstCl",
+      LastClientName: "last",
+      Language_Doc: "Fr",
+    };
     // Send a POST request to the /api/estimations endpoint with a test estimation
-    const response = await request(app).post("/api/estimations").send(fakeEstimation);
+    const response = await request(app)
+      .post("/api/estimations")
+      .send(fakeEstimation);
 
     // Assertions
     expect(response.status).toBe(201);
@@ -88,9 +96,18 @@ describe("PUT /api/estimations", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake estimation data (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc)
-    const fakeEstimation = { Email: "estimation_Test@gmail.com", Id_Translator: "1",FirstClientName:"firstCl",LastClientName:"last",Language_Doc:"En",IdTarification:"2"};
+    const fakeEstimation = {
+      Email: "estimation_Test@gmail.com",
+      Id_Translator: "1",
+      FirstClientName: "firstCl",
+      LastClientName: "last",
+      Language_Doc: "En",
+      IdTarification: "2",
+    };
     // Send a PUT request to the /api/estimations endpoint with a test estimation
-    const response = await request(app).put("/api/estimations").send(fakeEstimation);
+    const response = await request(app)
+      .put("/api/estimations")
+      .send(fakeEstimation);
 
     // Assertions
     expect(response.status).toBe(200);
@@ -114,6 +131,5 @@ describe("DELETE /api/estimations/:id", () => {
     // Assertions
     expect(response.status).toBe(204);
     expect(response.body).toBeInstanceOf(Object);
- 
   });
 });

@@ -10,7 +10,9 @@ describe("EstimationRepository", () => {
   // Test: Check if EstimationRepository extends AbstractRepository
   test("EstimationRepository extends AbstractRepository", async () => {
     // Assertions
-    expect(Object.getPrototypeOf(EstimationRepository)).toBe(AbstractRepository);
+    expect(Object.getPrototypeOf(EstimationRepository)).toBe(
+      AbstractRepository
+    );
   });
 
   // Test: Check if tables.estimation is an instance of EstimationRepository
@@ -28,14 +30,26 @@ describe("EstimationRepository", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake estimation data (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc)
-    const fakeEstimation = { Email: "test@gmail.com", Id_Translator: "1",FirstClientName:"firstCl",LastClientName:"last",Language_Doc:"it"  };
+    const fakeEstimation = {
+      Email: "test@gmail.com",
+      Id_Translator: "1",
+      FirstClientName: "firstCl",
+      LastClientName: "last",
+      Language_Doc: "it",
+    };
     // Call the create method of the estimation repository
     const returned = await tables.estimation.create(fakeEstimation);
 
     // Assertions
     expect(database.query).toHaveBeenCalledWith(
       "insert into estimation (Email, Id_Translator,FirstClientName,LastClientName,Language_Doc) values (?, ?, ?, ?, ?)",
-      [fakeEstimation.Email, fakeEstimation.Id_Translator,fakeEstimation.FirstClientName, fakeEstimation.LastClientName,fakeEstimation.Language_Doc]
+      [
+        fakeEstimation.Email,
+        fakeEstimation.Id_Translator,
+        fakeEstimation.FirstClientName,
+        fakeEstimation.LastClientName,
+        fakeEstimation.Language_Doc,
+      ]
     );
     expect(returned).toBe(result.insertId);
   });

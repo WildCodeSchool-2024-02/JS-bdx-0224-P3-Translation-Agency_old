@@ -7,7 +7,13 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import translator-related actions
-const { browse, read, add ,edit,destroy } = require("../../../controllers/translatorActions");
+const {
+  browse,
+  read,
+  add,
+  edit,
+  destroy,
+} = require("../../../controllers/translatorActions");
 
 // Route to get a list of translators
 router.get("/", browse);

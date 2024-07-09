@@ -10,7 +10,9 @@ describe("UserConnectionRepository", () => {
   // Test: Check if UserConnectionRepository extends AbstractRepository
   test("UserConnectionRepository extends AbstractRepository", async () => {
     // Assertions
-    expect(Object.getPrototypeOf(UserConnectionRepository)).toBe(AbstractRepository);
+    expect(Object.getPrototypeOf(UserConnectionRepository)).toBe(
+      AbstractRepository
+    );
   });
 
   // Test: Check if tables.user is an instance of UserConnectionRepository
@@ -28,7 +30,7 @@ describe("UserConnectionRepository", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake user data Email, Password
-    const fakeuser = { Email: "admin@gmail.com", Password: "admin01"};
+    const fakeuser = { Email: "admin@gmail.com", Password: "admin01" };
 
     // Call the create method of the user repository
     const returned = await tables.user.create(fakeuser);

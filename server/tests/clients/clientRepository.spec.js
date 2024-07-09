@@ -28,7 +28,13 @@ describe("ClientRepository", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake client data Email, Password,FirstName,LastName,NumberPhone
-    const fakeClient = { Email: "test@gmail.com", Password: "passCl1",FirstName:"first",LastName:"last",NumberPhone:"565689"  };
+    const fakeClient = {
+      Email: "test@gmail.com",
+      Password: "passCl1",
+      FirstName: "first",
+      LastName: "last",
+      NumberPhone: "565689",
+    };
 
     // Call the create method of the client repository
     const returned = await tables.client.create(fakeClient);
@@ -36,7 +42,13 @@ describe("ClientRepository", () => {
     // Assertions
     expect(database.query).toHaveBeenCalledWith(
       "insert into clients (Email, Password,FirstName,LastName,NumberPhone) values (?, ?, ?, ?, ?)",
-      [fakeClient.Email, fakeClient.Password,fakeClient.FirstName, fakeClient.LastName,fakeClient.NumberPhone]
+      [
+        fakeClient.Email,
+        fakeClient.Password,
+        fakeClient.FirstName,
+        fakeClient.LastName,
+        fakeClient.NumberPhone,
+      ]
     );
     expect(returned).toBe(result.insertId);
   });

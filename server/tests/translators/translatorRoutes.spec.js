@@ -63,10 +63,19 @@ describe("POST /api/translators", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
-   // Fake translator data (Email, Password,FirstName,LastName,NumberPhone,language)
-   const faketranslator = { Email: "translator@gmail.com", Password: "passTrans1",FirstName:"first",LastName:"last",NumberPhone:"9999999",language:"Fr"  };
+    // Fake translator data (Email, Password,FirstName,LastName,NumberPhone,language)
+    const faketranslator = {
+      Email: "translator@gmail.com",
+      Password: "passTrans1",
+      FirstName: "first",
+      LastName: "last",
+      NumberPhone: "9999999",
+      language: "Fr",
+    };
     // Send a POST request to the /api/translators endpoint with a test translator
-    const response = await request(app).post("/api/translators").send(faketranslator);
+    const response = await request(app)
+      .post("/api/translators")
+      .send(faketranslator);
 
     // Assertions
     expect(response.status).toBe(201);
@@ -88,9 +97,19 @@ describe("PUT /api/translators", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake translator data (Email, Password,FirstName,LastName,NumberPhone,language)
-    const faketranslator = { Email: "translator_01@gmail.com", Password: "passTrans1",FirstName:"first",LastName:"last",NumberPhone:"777777",language:"Fr",idTranslator:"1"};    
+    const faketranslator = {
+      Email: "translator_01@gmail.com",
+      Password: "passTrans1",
+      FirstName: "first",
+      LastName: "last",
+      NumberPhone: "777777",
+      language: "Fr",
+      idTranslator: "1",
+    };
     // Send a PUT request to the /api/translators endpoint with a test translator
-    const response = await request(app).put("/api/translators").send(faketranslator);
+    const response = await request(app)
+      .put("/api/translators")
+      .send(faketranslator);
 
     // Assertions
     expect(response.status).toBe(200);

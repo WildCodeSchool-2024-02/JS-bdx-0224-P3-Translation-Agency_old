@@ -34,7 +34,6 @@ const read = async (req, res, next) => {
   }
 };
 
-
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the estimation data from the request body
@@ -61,7 +60,7 @@ const edit = async (req, res, next) => {
     // Insert the estimation into the database
     const modifiedId = await tables.estimation.update(estimationBody);
 
-    // Respond with HTTP 200 (updated) estimation 
+    // Respond with HTTP 200 (updated) estimation
     res.status(200).json({ modifiedId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -78,7 +77,7 @@ const destroy = async (req, res, next) => {
     // Insert the item into the database
     const deletedId = await tables.estimation.delete(estimationId);
 
-    // Respond with HTTP 204 (deleted) estimation 
+    // Respond with HTTP 204 (deleted) estimation
     res.status(204).json({ deletedId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -91,6 +90,5 @@ module.exports = {
   read,
   edit,
   add,
-  destroy
+  destroy,
 };
-

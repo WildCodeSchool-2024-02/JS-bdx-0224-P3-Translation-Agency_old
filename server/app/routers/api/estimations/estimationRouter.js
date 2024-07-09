@@ -7,7 +7,13 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import item-related actions
-const { browse, read,edit,destroy, add } = require("../../../controllers/estimationActions");
+const {
+  browse,
+  read,
+  edit,
+  destroy,
+  add,
+} = require("../../../controllers/estimationActions");
 
 // Route to get a list of estimations
 router.get("/", browse);

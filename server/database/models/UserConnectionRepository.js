@@ -1,4 +1,4 @@
-const AbstractRepository = require("./AbstractRepository"); 
+const AbstractRepository = require("./AbstractRepository");
 class UserConnectionRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the parent class (AbstractRepository)
@@ -6,9 +6,9 @@ class UserConnectionRepository extends AbstractRepository {
     super({ table: "admins_App" });
   }
 
-   // The C of CRUD - Create operation
+  // The C of CRUD - Create operation
 
-   async create(user) {
+  async create(user) {
     // Execute the SQL INSERT query to add a new translator to the "translators" table
     const [result] = await this.database.query(
       `insert into ${this.table} (Email, Password) values (?, ?)`,
@@ -41,25 +41,23 @@ class UserConnectionRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-   async update(user) {
+  async update(user) {
     const [result] = await this.database.query(
       `UPDATE ${this.table}  SET Email =?, Password =? where Id_User = ?`,
-      [user.Email, user.Password,user.IdUser]
-    );
-    return result;
-   }
-
-
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an User by its ID
-
-   async delete(id) {
-     const [result] = await this.database.query(
-      `DELETE FROM ${this.table} where Id_User = ?`,[id]
+      [user.Email, user.Password, user.IdUser]
     );
     return result;
   }
 
+  // The D of CRUD - Delete operation
+  // TODO: Implement the delete operation to remove an User by its ID
 
+  async delete(id) {
+    const [result] = await this.database.query(
+      `DELETE FROM ${this.table} where Id_User = ?`,
+      [id]
+    );
+    return result;
+  }
 }
 module.exports = UserConnectionRepository;

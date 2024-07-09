@@ -64,7 +64,7 @@ describe("POST /api/users", () => {
     jest.spyOn(database, "query").mockImplementation(() => [result]);
 
     // Fake user data Email, Password
-    const fakeuser = { Email: "test2@gmail.com", Password: "pass"};
+    const fakeuser = { Email: "test2@gmail.com", Password: "pass" };
     // Send a POST request to the /api/users endpoint with a test user
     const response = await request(app).post("/api/users").send(fakeuser);
 
@@ -87,7 +87,11 @@ describe("PUT /api/users", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
     // Fake user data Email, Password
-    const fakeuser = { Email: "client01@gmail.com", Password: "passCl2",Id_User:"1"};
+    const fakeuser = {
+      Email: "client01@gmail.com",
+      Password: "passCl2",
+      Id_User: "1",
+    };
     // Send a PUT request to the /api/users endpoint with a test user
     const response = await request(app).put("/api/users").send(fakeuser);
 

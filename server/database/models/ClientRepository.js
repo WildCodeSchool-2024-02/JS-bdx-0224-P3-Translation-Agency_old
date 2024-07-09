@@ -13,7 +13,13 @@ class ClientRepository extends AbstractRepository {
     // Execute the SQL INSERT query to add a new client to the "clients" table
     const [result] = await this.database.query(
       `insert into ${this.table} (Email, Password,FirstName,LastName,NumberPhone) values (?, ?, ?, ?, ?)`,
-      [client.Email, client.Password,client.FirstName,client.LastName,client.NumberPhone]
+      [
+        client.Email,
+        client.Password,
+        client.FirstName,
+        client.LastName,
+        client.NumberPhone,
+      ]
     );
 
     // Return the ID of the newly inserted client
@@ -42,23 +48,31 @@ class ClientRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-   async update(client) {
+  async update(client) {
     const [result] = await this.database.query(
       `UPDATE ${this.table}  SET Email =?, Password =?,FirstName =?,LastName =?,NumberPhone =? WHERE Id_Client = ?`,
-      [client.Email, client.Password,client.FirstName,client.LastName,client.NumberPhone,client.IdClient]
+      [
+        client.Email,
+        client.Password,
+        client.FirstName,
+        client.LastName,
+        client.NumberPhone,
+        client.IdClient,
+      ]
     );
     return result;
-   }
+  }
 
   // The D of CRUD - Delete operation
-  
+
   async delete(id) {
     const [result] = await this.database.query(
-     `DELETE FROM ${this.table} where Id_Client = ?`,[id]
-   );
+      `DELETE FROM ${this.table} where Id_Client = ?`,
+      [id]
+    );
 
-   return result;
- }
+    return result;
+  }
 }
 
 module.exports = ClientRepository;

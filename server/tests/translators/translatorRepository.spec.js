@@ -10,7 +10,9 @@ describe("TranslatorRepository", () => {
   // Test: Check if TranslatorRepository extends AbstractRepository
   test("TranslatorRepository extends AbstractRepository", async () => {
     // Assertions
-    expect(Object.getPrototypeOf(TranslatorRepository)).toBe(AbstractRepository);
+    expect(Object.getPrototypeOf(TranslatorRepository)).toBe(
+      AbstractRepository
+    );
   });
 
   // Test: Check if tables.translator is an instance of TranslatorRepository
@@ -27,7 +29,14 @@ describe("TranslatorRepository", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
     // Fake translator data (Email, Password,FirstName,LastName,NumberPhone,language)
-    const faketranslator = { Email: "translator@gmail.com", Password: "passTrans1",FirstName:"first",LastName:"last",NumberPhone:"565689",language:"Fr"  };
+    const faketranslator = {
+      Email: "translator@gmail.com",
+      Password: "passTrans1",
+      FirstName: "first",
+      LastName: "last",
+      NumberPhone: "565689",
+      language: "Fr",
+    };
 
     // Call the create method of the translator repository
     const returned = await tables.translator.create(faketranslator);
@@ -35,7 +44,14 @@ describe("TranslatorRepository", () => {
     // Assertions
     expect(database.query).toHaveBeenCalledWith(
       "insert into translators (Email, Password,FirstName,LastName,NumberPhone,language) values (?, ?, ?, ?, ?, ?)",
-      [faketranslator.Email, faketranslator.Password,faketranslator.FirstName, faketranslator.LastName,faketranslator.NumberPhone,faketranslator.language]
+      [
+        faketranslator.Email,
+        faketranslator.Password,
+        faketranslator.FirstName,
+        faketranslator.LastName,
+        faketranslator.NumberPhone,
+        faketranslator.language,
+      ]
     );
     expect(returned).toBe(result.insertId);
   });
@@ -51,7 +67,7 @@ describe("TranslatorRepository", () => {
     // Call the readAll method of the translator repository
     const returned = await tables.translator.readAll();
 
-    // Assertions 
+    // Assertions
     expect(database.query).toHaveBeenCalledWith("select * from translators");
     expect(returned).toStrictEqual(rows);
   });

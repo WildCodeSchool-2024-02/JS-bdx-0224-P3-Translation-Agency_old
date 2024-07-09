@@ -4,10 +4,8 @@ import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import { use, authenticate } from "passport";
 import { query } from "../../database/client"; // Replace with your MySQL database configuration
 
-
-
 const opts = {};
-opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken(); 
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.secretKey;
 
 use(
@@ -20,9 +18,8 @@ use(
 
       if (user) {
         return done(null, user);
-      } 
-        return done(null, false);
-    
+      }
+      return done(null, false);
     } catch (err) {
       return done(err, false);
     }

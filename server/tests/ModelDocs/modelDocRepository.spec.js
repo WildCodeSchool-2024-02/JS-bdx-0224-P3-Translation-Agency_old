@@ -10,7 +10,9 @@ describe("ModelDocumentRepository", () => {
   // Test: Check if ModelDocumentRepository extends AbstractRepository
   test("ModelDocumentRepository extends AbstractRepository", async () => {
     // Assertions
-    expect(Object.getPrototypeOf(ModelDocumentRepository)).toBe(AbstractRepository);
+    expect(Object.getPrototypeOf(ModelDocumentRepository)).toBe(
+      AbstractRepository
+    );
   });
 
   // Test: Check if tables.ModelDocs is an instance of ModelDocumentRepository
@@ -27,7 +29,14 @@ describe("ModelDocumentRepository", () => {
     // Mock the implementation of the database query method
     jest.spyOn(database, "query").mockImplementation(() => [result]);
     // Fake model data (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator) values (?, ?, ?, ?, ?, ?)`,
-     const fakeModel = { TypeDoc: "CIN", LanguageSource: "Italien",Status:"1",PathUploadFile:"D:/fake_path/doc001",IdClient:"2",IdTranslator:"1"};
+    const fakeModel = {
+      TypeDoc: "CIN",
+      LanguageSource: "Italien",
+      Status: "1",
+      PathUploadFile: "D:/fake_path/doc001",
+      IdClient: "2",
+      IdTranslator: "1",
+    };
 
     // Call the create method of the translator repository
     const returned = await tables.translator.create(faketranslator);
@@ -35,7 +44,14 @@ describe("ModelDocumentRepository", () => {
     // Assertions
     expect(database.query).toHaveBeenCalledWith(
       "insert into Model_Docs (Type_Doc,Languages_source,Status,Real_Path_Emplacement,Id_Client,Id_Translator) values (?, ?, ?, ?, ?, ?)",
-      [fakeModel.TypeDoc, fakeModel.LanguageSource,fakeModel.Status, fakeModel.PathUploadFile,fakeModel.IdClient,fakeModel.IdTranslator]
+      [
+        fakeModel.TypeDoc,
+        fakeModel.LanguageSource,
+        fakeModel.Status,
+        fakeModel.PathUploadFile,
+        fakeModel.IdClient,
+        fakeModel.IdTranslator,
+      ]
     );
     expect(returned).toBe(result.insertId);
   });
@@ -51,7 +67,7 @@ describe("ModelDocumentRepository", () => {
     // Call the readAll method of the translator repository
     const returned = await tables.translator.readAll();
 
-    // Assertions 
+    // Assertions
     expect(database.query).toHaveBeenCalledWith("select * from Model_Docs");
     expect(returned).toStrictEqual(rows);
   });
